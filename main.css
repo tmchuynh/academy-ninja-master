@@ -37,8 +37,7 @@
     margin-top: .5rem;
 }
 
-.number,
-.icons {
+.number{
     margin: .25rem 1rem;
     border: 1px solid red;
     width: 3rem;
@@ -46,7 +45,13 @@
 }
 
 .icons {
-    border: none
+    margin: .5rem 1rem;
+}
+
+.life {
+    border: none;
+    width: 3rem;
+    height: 3rem;
 }
 
 .show {

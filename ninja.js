@@ -6,6 +6,8 @@ var background = document.getElementById("background");
 var sushi = document.getElementsByClassName("sushi");
 var pumpkin = document.getElementsByClassName("pumpkin");
 var ninja = document.getElementById("character");
+var lives = document.getElementsByClassName("icons");
+var score = document.getElementsByClassName("number");
 
 function update() {
 	ninja.style.left = leftValue + "px";
@@ -72,8 +74,13 @@ document.onkeydown = function (e) {
 
 	// console.log(sushi)
 
-	checkCollision(sushi);
-	checkCollision(pumpkin);
+	if (checkCollision(sushi)) {
+		score[0].innerHTML = parseInt(score[0].innerHTML) + 1;
+		console.log(score[0].innerHTML)
+	}
+	else if (checkCollision(pumpkin)) {
+		lives.parentNode.removeChild(lives.firstChild);
+	}
 
 
 
@@ -96,5 +103,6 @@ function checkCollision(item) {
 		topValue >= sushiTop - 32 &&
 		topValue - 86 <= sushiTop) {
 		console.log('collidin');
+		return true;
 	}
 }
