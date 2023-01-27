@@ -1,5 +1,7 @@
+// character values
 var leftValue = 450, topValue = 100;
 var walkValue = 1;
+
 var background = document.getElementById("background");
 var sushi = document.getElementsByClassName("sushi");
 var pumpkin = document.getElementsByClassName("pumpkin");
@@ -54,7 +56,6 @@ document.onkeydown = function (e) {
 	if (e.keyCode == 37 && leftValue > 0) { // LEFT
 		leftValue = leftValue - 10;
 		ninja.style.backgroundImage = "url('img/left" + walkValue + ".png')";
-
 	}
 	else if (e.keyCode == 39 && leftValue < 501) { // RIGHT
 		leftValue = leftValue + 10;
@@ -69,7 +70,31 @@ document.onkeydown = function (e) {
 		ninja.style.backgroundImage = "url('img/top" + walkValue + ".png')";
 	}
 
+	// console.log(sushi)
+
+	checkCollision(sushi);
+	checkCollision(pumpkin);
+
+
 
 	update();
 
+}
+
+function checkCollision(item) {
+	// console.log(item)
+
+	var sushiLeft = item[0].style.left.replace("px", "");
+	sushiLeft = parseInt(sushiLeft);
+	var sushiTop = item[0].style.top.replace("px", "");
+	sushiTop = parseInt(sushiTop);
+
+
+	// console.log(leftValue, sushiLeft)
+	if (leftValue + 59 / 2 >= sushiLeft - 32 / 2 &&
+		leftValue + 59 / 2 <= sushiLeft + 32 &&
+		topValue >= sushiTop - 32 &&
+		topValue - 86 <= sushiTop) {
+		console.log('collidin');
+	}
 }
