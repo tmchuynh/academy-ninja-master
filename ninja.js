@@ -73,19 +73,24 @@ document.onkeydown = function (e) {
 	}
 
 	// console.log(sushi)
+	console.log(lives);
+
 
 	if (checkCollision(sushi)) {
 		score[0].innerHTML = parseInt(score[0].innerHTML) + 1;
 		console.log(score[0].innerHTML)
 	}
 	else if (checkCollision(pumpkin)) {
-		lives.parentNode.removeChild(lives.firstChild);
+		lives[0].remove(lives[0].lastChild);
 	}
-
-
-
 	update();
 
+}
+
+function removeElements(elements) {
+	while (elements.length > 0) {
+		elements[0].parentNode.removeChild(elements[0]);
+	}
 }
 
 function checkCollision(item) {
@@ -103,6 +108,8 @@ function checkCollision(item) {
 		topValue >= sushiTop - 32 &&
 		topValue - 86 <= sushiTop) {
 		console.log('collidin');
+		removeElements(item);
+		spawnItem(item);
 		return true;
 	}
 }
