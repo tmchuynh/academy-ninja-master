@@ -1,0 +1,20 @@
+{
+  "name": "academy-ninja-master",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ninja.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss": "node-sass --watch public/scss -o public/css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tmchuynh/academy-ninja-master.git"
+  },
+  "author": "Tina Huynh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tmchuynh/academy-ninja-master/issues"
+  },
+  "homepage": "https://github.com/tmchuynh/academy-ninja-master#readme"
+}
