@@ -1,22 +1,38 @@
 <html>
 
 <head>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<link href="main.css" rel="stylesheet">
 
 </head>
 
 <body>
-	<div id='background'>
-		<div id="maze" class="shadow"></div>
-		<div id='character'></div>
-		<!-- <img class="sushi" src="./img/onigiri.png"> -->
-		<!-- <img class="pumpkin" src="./img/scaredy.png"> -->
-	</div>
+	<section class="game">
+		<div id='background'>
+			<div id="maze" class="shadow"></div>
+			<div id='character'></div>
+			<!-- <img class="sushi" src="./img/onigiri.png"> -->
+			<!-- <img class="pumpkin" src="./img/scaredy.png"> -->
+		</div>
+		<div class="scoreboard">
+			<div class="score">
+				<h1>Score: </h1>
+				<div class="number"></div>
+			</div>
+			<div class="lives">
+				<h1>Lives: </h1>
+				<div class="icons"></div>
+			</div>
+		</div>
+
+	</section>
 
 
 
-	<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
+	<script src="https://code.jquery.com/jquery-3.6.3.min.js"
+		integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
 	<script src="ninja.js"></script>
 
 </body>
