@@ -15,12 +15,10 @@
     height: 86px;
 }
 
-.sushi {
-    width: 2rem;
-}
-
+.sushi,
 .pumpkin {
     width: 2rem;
+    position: fixed;
 }
 
 .show {

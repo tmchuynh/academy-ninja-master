@@ -1,5 +1,6 @@
 var leftValue = 450, topValue = 100;
 var walkValue = 1;
+var background = document.getElementById("background");
 var sushi = document.getElementsByClassName("sushi");
 var pumpkin = document.getElementsByClassName("pumpkin");
 var ninja = document.getElementById("character");
@@ -10,8 +11,34 @@ function update() {
 }
 
 $(document).ready(function () {
-	sushi[0].classList.remove("hide")
+	spawnItem("sushi")
+	spawnItem("pumpkin")
 })
+
+function spawnItem(item) {
+	var i = document.createElement("img");
+	var source = document.createAttribute("src");
+
+	i.classList.add(item);
+
+	// console.log(source);
+
+	if (item == "sushi") {
+		source.value = "./img/onigiri.png";
+		i.setAttributeNode(source);
+	}
+	else if (item == "pumpkin") {
+		source.value = "./img/scaredy.png";
+		i.setAttributeNode(source);
+	}
+
+	i.style.top = Math.floor(Math.random() * 501);
+	i.style.left = Math.floor(Math.random() * 501);
+
+	console.log(i);
+
+	background.appendChild(i);
+}
 
 
 document.onkeydown = function (e) {
