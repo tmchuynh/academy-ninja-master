@@ -8,8 +8,6 @@ var p_leftValue, p_topValue;
 var background = document.getElementById("background");
 var sushiItem = document.getElementsByClassName("sushi");
 var pumpkinItem = document.getElementsByClassName("pumpkin");
-// var pumpkin_id = document.getElementById("pumpkin0");
-// var sushi_id = document.getElementById("sushi1");
 var ninja = document.getElementById("character");
 var life = document.getElementsByClassName("life");
 var score = document.getElementsByClassName("number");
@@ -21,16 +19,7 @@ function update() {
 	console.log(pumpkinItem);
 	pumpkinItem[0].style.left = p_leftValue + "px";
 	pumpkinItem[0].style.top = p_topValue + "px";
-
-	console.log(pumpkinItem[0].style.left);
 }
-
-
-// document.addEventListener('keydown', (event) => {
-// 	// key is pressed and held
-// 	g_speed = 20;
-// 	console.log(event.repeat); // true when event is repeatedly fired
-// });
 
 $(document).ready(function () {
 	spawnItem("sushi")
@@ -44,7 +33,6 @@ function spawnItem(item) {
 
 	i.classList.add(item);
 	i.setAttribute("id", item + 0);
-	console.log(i);
 
 	i.style.top = Math.floor(Math.random() * 501);
 	i.style.left = Math.floor(Math.random() * 501);
@@ -73,22 +61,18 @@ document.onkeydown = function (e) {
 
 	if (e.keyCode == 37 && leftValue > 0) { // LEFT
 		leftValue = leftValue - 10;
-		changePumpkinPos();
 		ninja.style.backgroundImage = "url('img/left" + walkValue + ".png')";
 	}
 	else if (e.keyCode == 39 && leftValue < 501) { // RIGHT
 		leftValue = leftValue + 10;
-		changePumpkinPos();
 		ninja.style.backgroundImage = "url('img/right" + walkValue + ".png')";
 	}
 	else if (e.keyCode == 40 && topValue < 501) { // DOWN
 		topValue = topValue + 10;
-		changePumpkinPos();
 		ninja.style.backgroundImage = "url('img/down" + walkValue + ".png')";
 	}
 	else if (e.keyCode = 38 && topValue > 0) { // UP
 		topValue = topValue - 10;
-		changePumpkinPos();
 		ninja.style.backgroundImage = "url('img/top" + walkValue + ".png')";
 	}
 
@@ -141,7 +125,6 @@ function checkCollision(item) {
 		leftValue + 59 / 2 <= sushiLeft + 32 &&
 		topValue >= sushiTop - 32 &&
 		topValue - 86 <= sushiTop) {
-		console.log('colliding');
 		removeElements(item);
 		return true;
 	}
@@ -154,37 +137,5 @@ function gameOver() {
 }
 
 function reset() {
-location.reload()
-}
-
-const directions = ["+", "-"];
-
-// 1 or 2 for + or -
-
-function getRandomNumber(max) {
-	return Math.floor(Math.random() * (max - 10) + 10);
-}
-
-function pickDirection() {
-	return getRandomNumber(2);
-}
-
-function changePumpkinPos() {
-	if (pickDirection() == 0) {
-		if (pickDirection() == 0 && p_leftValue > 501) {
-			p_leftValue = p_leftValue + getRandomNumber(35);
-		}
-		else if (pickDirection() == 1 && p_topValue < 501) {
-			p_topValue = p_topValue + getRandomNumber(50);
-		}
-	}
-	else {
-		if (pickDirection() == 0 && p_leftValue > 0) {
-			p_leftValue = p_leftValue - getRandomNumber(90);
-		}
-		else if (pickDirection() == 1 && p_topValue > 0) {
-			p_topValue = p_topValue - getRandomNumber(75);
-		}
-	}
-	console.log(p_leftValue, p_topValue);
+	location.reload()
 }
