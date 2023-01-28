@@ -8,15 +8,14 @@
 </head>
 
 <body>
-	<section class="game">
+	<section id="game" class="game">
 		<div class="game_over hide">
 			<h1>GAME OVER</h1>
+			<button onclick="reset()" class="reset">PLAY AGAIN</button>
 		</div>
-		<div id='background'>
+		<div id="background">
 			<div id="maze" class="shadow"></div>
-			<div id='character'></div>
-			<!-- <img class="sushi" src="./img/onigiri.png"> -->
-			<!-- <img class="pumpkin" src="./img/scaredy.png"> -->
+			<div id="character"></div>
 		</div>
 		<div class="scoreboard">
 			<div class="score">
@@ -25,9 +24,11 @@
 			</div>
 			<div class="lives">
 				<h1>Lives: </h1>
-				<div class="life">5</div>
+				<div class="life">3</div>
 			</div>
 		</div>
+		
+		
 
 	</section>
 

@@ -15,6 +15,13 @@ function update() {
 	ninja.style.top = topValue + "px";
 }
 
+
+// document.addEventListener('keydown', (event) => {
+// 	// key is pressed and held
+// 	g_speed = 20;
+// 	console.log(event.repeat); // true when event is repeatedly fired
+// });
+
 $(document).ready(function () {
 	spawnItem("sushi")
 	spawnItem("pumpkin")
@@ -27,6 +34,9 @@ function spawnItem(item) {
 
 	i.classList.add(item);
 
+	i.style.top = Math.floor(Math.random() * 501);
+	i.style.left = Math.floor(Math.random() * 501);
+
 	if (item == "sushi") {
 		source.value = "./img/onigiri.png";
 		i.setAttributeNode(source);
@@ -36,12 +46,8 @@ function spawnItem(item) {
 		i.setAttributeNode(source);
 	}
 
-	i.style.top = Math.floor(Math.random() * 501);
-	i.style.left = Math.floor(Math.random() * 501);
-
 	background.appendChild(i);
 }
-
 
 document.onkeydown = function (e) {
 	if (walkValue == 1) {
@@ -74,8 +80,6 @@ document.onkeydown = function (e) {
 		reSpawn();
 	}
 	else if (checkCollision(pumpkinItem)) {
-		// lives[0].remove(lives[0].lastChild);
-		console.log(life[0].innerHTML);
 		if (life[0].innerHTML > 1) {
 			life[0].innerHTML = life[0].innerHTML - 1;
 			reSpawn();
@@ -90,7 +94,6 @@ document.onkeydown = function (e) {
 
 function reSpawn() {
 	for (i = 9; i < background.childNodes.length + 1; i++) {
-		console.log(background.childNodes[i]);
 		if (!(background.childNodes[i].classList.contains("sushi"))) {
 			spawnItem("sushi");
 			break;
@@ -110,7 +113,6 @@ function removeElements(elements) {
 
 // takes in a document element 
 function checkCollision(item) {
-
 	var sushiLeft = item[0].style.left.replace("px", "");
 	sushiLeft = parseInt(sushiLeft);
 	var sushiTop = item[0].style.top.replace("px", "");
@@ -121,15 +123,30 @@ function checkCollision(item) {
 		topValue >= sushiTop - 32 &&
 		topValue - 86 <= sushiTop) {
 		console.log('colliding');
-
 		removeElements(item);
-
 		return true;
 	}
 }
 
 function gameOver() {
-	life[0].innerHTML = life[0].innerHTML - 1
+	life[0].innerHTML = life[0].innerHTML - 1;
 	$(background).remove();
 	game_over_screen[0].classList.remove("hide");
+}
+
+function reset() {
+	var game = document.getElementById("game");
+	game_over_screen[0].classList.add("hide");
+	background = document.createElement("div");
+	background.setAttribute("id", "background");
+	maze = document.createElement("div");
+	maze.setAttribute("id", "maze");
+	maze.setAttribute("class", "shadow");
+	background.appendChild(maze);
+	character = document.createElement("div");
+	character.setAttribute("id", "character");
+	background.appendChild(character);
+	game.appendChild(background);
+	spawnItem("sushi")
+	spawnItem("pumpkin")
 }

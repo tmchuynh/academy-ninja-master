@@ -51,10 +51,19 @@
     width: 550px;
     height: 575px;
     background-color: red;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 
     h1 {
         text-align: center;
         margin-top: 15rem;
+    }
+
+    .reset {
+        border-radius: 25px;
+        height: 2.5rem;
+        width: 8rem;
     }
 }
 
