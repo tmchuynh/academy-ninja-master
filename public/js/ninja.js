@@ -93,12 +93,12 @@ document.onkeydown = function (e) {
 }
 
 function reSpawn() {
-	for (i = 9; i < background.childNodes.length + 1; i++) {
+	for (i = background.childNodes.length - 1; i < background.childNodes.length + 1; i++) {
 		if (!(background.childNodes[i].classList.contains("sushi"))) {
 			spawnItem("sushi");
 			break;
 		}
-		else if (!(background.childNodes[i].classList.contains("pumpkin"))) {
+		if (!(background.childNodes[i].classList.contains("pumpkin"))) {
 			spawnItem("pumpkin");
 			break;
 		}
