@@ -154,20 +154,7 @@ function gameOver() {
 }
 
 function reset() {
-	var game = document.getElementById("game");
-	game_over_screen[0].classList.add("hide");
-	background = document.createElement("div");
-	background.setAttribute("id", "background");
-	maze = document.createElement("div");
-	maze.setAttribute("id", "maze");
-	maze.setAttribute("class", "shadow");
-	background.appendChild(maze);
-	character = document.createElement("div");
-	character.setAttribute("id", "character");
-	background.appendChild(character);
-	game.appendChild(background);
-	spawnItem("sushi")
-	spawnItem("pumpkin")
+location.reload()
 }
 
 const directions = ["+", "-"];
