@@ -3,8 +3,8 @@ var leftValue = 450, topValue = 100;
 var walkValue = 1;
 
 var background = document.getElementById("background");
-var sushi = document.getElementsByClassName("sushi");
-var pumpkin = document.getElementsByClassName("pumpkin");
+var sushiItem = document.getElementsByClassName("sushi");
+var pumpkinItem = document.getElementsByClassName("pumpkin");
 var ninja = document.getElementById("character");
 var lives = document.getElementsByClassName("icons");
 var score = document.getElementsByClassName("number");
@@ -19,13 +19,12 @@ $(document).ready(function () {
 	spawnItem("pumpkin")
 })
 
+// takes in a string = className
 function spawnItem(item) {
 	var i = document.createElement("img");
 	var source = document.createAttribute("src");
 
 	i.classList.add(item);
-
-	// console.log(source);
 
 	if (item == "sushi") {
 		source.value = "./img/onigiri.png";
@@ -39,15 +38,11 @@ function spawnItem(item) {
 	i.style.top = Math.floor(Math.random() * 501);
 	i.style.left = Math.floor(Math.random() * 501);
 
-	console.log(i);
-
 	background.appendChild(i);
 }
 
 
 document.onkeydown = function (e) {
-	// console.log(e);
-
 	if (walkValue == 1) {
 		walkValue = 2;
 	}
@@ -72,19 +67,31 @@ document.onkeydown = function (e) {
 		ninja.style.backgroundImage = "url('img/top" + walkValue + ".png')";
 	}
 
-	// console.log(sushi)
-	console.log(lives);
-
-
-	if (checkCollision(sushi)) {
+	if (checkCollision(sushiItem)) {
 		score[0].innerHTML = parseInt(score[0].innerHTML) + 1;
 		console.log(score[0].innerHTML)
+		reSpawn();
 	}
-	else if (checkCollision(pumpkin)) {
+	else if (checkCollision(pumpkinItem)) {
 		lives[0].remove(lives[0].lastChild);
+		reSpawn();
 	}
 	update();
 
+}
+
+function reSpawn() {
+	for (i = 9; i < background.childNodes.length + 1; i++) {
+		console.log(background.childNodes[i]);
+		if (!(background.childNodes[i].classList.contains("sushi"))) {
+			spawnItem("sushi");
+			break;
+		}
+		else if (!(background.childNodes[i].classList.contains("pumpkin"))) {
+			spawnItem("pumpkin");
+			break;
+		}
+	}
 }
 
 function removeElements(elements) {
@@ -93,23 +100,22 @@ function removeElements(elements) {
 	}
 }
 
+// takes in a document element 
 function checkCollision(item) {
-	// console.log(item)
 
 	var sushiLeft = item[0].style.left.replace("px", "");
 	sushiLeft = parseInt(sushiLeft);
 	var sushiTop = item[0].style.top.replace("px", "");
 	sushiTop = parseInt(sushiTop);
 
-
-	// console.log(leftValue, sushiLeft)
 	if (leftValue + 59 / 2 >= sushiLeft - 32 / 2 &&
 		leftValue + 59 / 2 <= sushiLeft + 32 &&
 		topValue >= sushiTop - 32 &&
 		topValue - 86 <= sushiTop) {
-		console.log('collidin');
+		console.log('colliding');
+
 		removeElements(item);
-		spawnItem(item);
+
 		return true;
 	}
 }
