@@ -6,8 +6,9 @@ var background = document.getElementById("background");
 var sushiItem = document.getElementsByClassName("sushi");
 var pumpkinItem = document.getElementsByClassName("pumpkin");
 var ninja = document.getElementById("character");
-var lives = document.getElementsByClassName("icons");
+var life = document.getElementsByClassName("life");
 var score = document.getElementsByClassName("number");
+var game_over_screen = document.getElementsByClassName("game_over");
 
 function update() {
 	ninja.style.left = leftValue + "px";
@@ -73,8 +74,15 @@ document.onkeydown = function (e) {
 		reSpawn();
 	}
 	else if (checkCollision(pumpkinItem)) {
-		lives[0].remove(lives[0].lastChild);
-		reSpawn();
+		// lives[0].remove(lives[0].lastChild);
+		console.log(life[0].innerHTML);
+		if (life[0].innerHTML > 1) {
+			life[0].innerHTML = life[0].innerHTML - 1;
+			reSpawn();
+		}
+		else {
+			gameOver();
+		}
 	}
 	update();
 
@@ -118,4 +126,10 @@ function checkCollision(item) {
 
 		return true;
 	}
+}
+
+function gameOver() {
+	life[0].innerHTML = life[0].innerHTML - 1
+	$(background).remove();
+	game_over_screen[0].classList.remove("hide");
 }
